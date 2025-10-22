@@ -1,22 +1,41 @@
 const WebSocket = require('ws');
+const fs = require('fs');
 
-const PORT = process.env.PORT || 3000;
-const wss = new WebSocket.Server({ port: PORT });
+// Load the config file
+let config = {
+  serverName: "Default Server",
+  port: 3000,
+  gamemode: "Survival",
+  maxPlayers: 50,
+  minecraftVersions: ["1.8.8", "1.12.2", "1.21.7"]
+};
 
-wss.on('connection', (ws) => {
+try {
+  const data = fs.readFileSync('./config.json');
+  config = JSON.parse(data);
+  console.log('Config loaded:', config);
+} catch (err) {
+  console.error('Error loading config.json, using defaults');
+}
+
+// WebSocket server setup
+const wss = new WebSocket.Server({ port: process.env.PORT || config.port });
+
+wss.on('connection', function connection(ws) {
   console.log('Player connected');
-
-  ws.on('message', (message) => {
-    console.log('Received:', message);
-    // TODO: handle EaglerCraft protocol here
+  
+  ws.on('message', function incoming(message) {
+    console.log('received: %s', message);
+    // Here you would handle EaglerCraft protocol messages
   });
 
   ws.on('close', () => {
     console.log('Player disconnected');
   });
 
-  ws.send('Welcome to your EaglerCraft server!');
+  ws.send(`Welcome to ${config.serverName}! You can join with versions ${config.minecraftVersions.join(', ')}.`);
 });
 
-console.log(`Server running on ws://localhost:${PORT}`);
+console.log(`EaglerCraft server "${config.serverName}" running on ws://localhost:${config.port}`);
+
 
