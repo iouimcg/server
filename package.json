@@ -1,7 +1,7 @@
 {
   "name": "eaglercraft-server",
   "version": "1.0.0",
-  "description": "Basic EaglerCraft WebSocket Server",
+  "description": "EaglerCraft WebSocket Server for Minecraft 1.8.8 to 1.21.7",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -13,3 +13,4 @@
     "node": ">=14"
   }
 }
+
