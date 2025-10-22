@@ -3,7 +3,8 @@
   "port": 3000,
   "gamemode": "Lifesteal",
   "maxPlayers": 50,
-  "motd": "Welcome to the best EaglerCraft server!",
+  "motd": "Welcome to EaglerCraft 1.8.8 to 1.21.7!",
   "allowPvP": true,
-  "allowFlight": false
+  "allowFlight": false,
+  "minecraftVersions": ["1.8.8", "1.12.2", "1.21.7"]
 }
