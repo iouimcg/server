@@ -1,0 +1,9 @@
+{
+  "serverName": "My EaglerCraft Server",
+  "port": 3000,
+  "gamemode": "Lifesteal",
+  "maxPlayers": 50,
+  "motd": "Welcome to the best EaglerCraft server!",
+  "allowPvP": true,
+  "allowFlight": false
+}
